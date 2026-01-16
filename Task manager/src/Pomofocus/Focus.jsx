@@ -41,8 +41,9 @@ function Focus() {
     };
 
     return (
+        
         <div className={`min-h-screen text-white transition-colors duration-500 delay-500 pb-10
-        ${activeTab === "pomodoro" ? "bg-[#8f322e]" : activeTab === "short" ? "bg-[#91C6BC]" : "bg-[#F875AA]"}`
+    ${activeTab === "pomodoro" ? "bg-[#BA4949]" : activeTab === "short" ? "bg-[#38858A]" : "bg-[#397097]"}`
         }>
             {/* --- NAVBAR --- */}
             <nav className="w-11/12 max-w-2xl mx-auto flex items-center justify-between py-4">
@@ -69,28 +70,28 @@ function Focus() {
 
             {/* --- TIMER SECTION --- */}
             <div className="flex justify-center mt-4 sm:mt-10 px-2">
-                <div className={`w-[95%] max-w-xl rounded-xl py-6 sm:py-10 px-3 text-center shadow-xl text-white transition-colors duration-500 delay-500
-                ${activeTab === "pomodoro" ? "bg-[#8f322e]/80 sm:bg-[#8f322e]" : activeTab === "short" ? "bg-[#07cceb]" : "bg-[#e3a034]"}`}>
+
+                <div className={`w-[95%] max-w-xl rounded-xl py-6 sm:py-10 px-3 text-center shadow-xl text-white transition-colors duration-500 delay-500 bg-white/10`}>
 
                     {/* BUTTONS SECTION */}
                     <div className="flex flex-wrap justify-center gap-2 sm:gap-5 mb-5 text-sm sm:text-lg">
                         <button
                             onClick={() => setActiveTab("pomodoro")}
-                            className={`px-3 py-1 sm:px-4 sm:py-2 rounded-md transition-colors duration-500 delay-500 ${activeTab === "pomodoro" ? "bg-[#742a27] font-bold" : ""}`}
+                            className={`px-3 py-1 sm:px-4 sm:py-2 rounded-md transition-colors duration-500 ${activeTab === "pomodoro" ? "bg-black/20 font-bold" : ""}`}
                         >
                             Pomodoro
                         </button>
 
                         <button
                             onClick={() => setActiveTab("short")}
-                            className={`px-3 py-1 sm:px-4 sm:py-2 rounded-md transition-colors duration-500 delay-500 ${activeTab === "short" ? "bg-[#bda639] font-bold" : ""}`}
+                            className={`px-3 py-1 sm:px-4 sm:py-2 rounded-md transition-colors duration-500 ${activeTab === "short" ? "bg-black/20 font-bold" : ""}`}
                         >
                             Short Break
                         </button>
 
                         <button
                             onClick={() => setActiveTab("long")}
-                            className={`px-3 py-1 sm:px-4 sm:py-2 rounded-md transition-colors duration-500 delay-500 ${activeTab === "long" ? "bg-[#7dace0] font-bold" : ""}`}
+                            className={`px-3 py-1 sm:px-4 sm:py-2 rounded-md transition-colors duration-500 ${activeTab === "long" ? "bg-black/20 font-bold" : ""}`}
                         >
                             Long Break
                         </button>
@@ -136,8 +137,8 @@ function Focus() {
                         />
 
                         {/* Button full width on mobile */}
-                        <button 
-                            onClick={addTask} 
+                        <button
+                            onClick={addTask}
                             className="bg-black/20 hover:bg-black/30 text-white font-semibold py-3 px-6 rounded transition w-full sm:w-auto flex items-center justify-center gap-2"
                         >
                             <span className="text-xl font-bold">+</span> Add
@@ -147,12 +148,12 @@ function Focus() {
                     {/* TASK LIST */}
                     <div className="grid gap-3 mt-4">
                         {arr.map((item, index) => (
-                            <Task 
-                                key={index} // Capital 'Key' galat hai, 'key' small hona chahiye
-                                index={index} 
-                                taskName={item} 
-                                removeTask={() => removeTask(index)} 
-                                updateTask={updateTask} 
+                            <Task
+                                key={index}
+                                index={index}
+                                taskName={item}
+                                removeTask={() => removeTask(index)}
+                                updateTask={updateTask}
                             />
                         ))}
                     </div>

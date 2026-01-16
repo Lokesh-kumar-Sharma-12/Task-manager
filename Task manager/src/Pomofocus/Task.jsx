@@ -73,7 +73,7 @@ function Task(props) {
                         </IconButton>
                         <DialogContent dividers>
                             <div>
-                                <h1 className='h-[40px] font-bold justify-center flex border bg-blue-200 items-center rounded-lg mb-2'>{props.taskName}</h1>
+                                <h1 className='h-10 font-bold justify-center flex border bg-blue-200 items-center rounded-lg mb-2'>{props.taskName}</h1>
                                 <div className="flex justify-center">
                                     <Timerdiv />
                                 </div>

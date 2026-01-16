@@ -1,40 +1,38 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Timerlong() {
-    //localStorage.clear();
-    const [time, setTime] = useState(() => {
-        const savedTime = localStorage.getItem("timeTrack");
-        return savedTime ? Number(savedTime) : 15 * 60;
-    });
+    const [time, setTime] = useState(15 * 60);
 
-    useEffect(() => {
-        localStorage.setItem("timeTrack", time);
-    }, [time]);
-
-
-    // const [time, setTime] = useState(15 * 60);
     const minutes = Math.floor(time / 60);
     const second = time % 60;
+    
     const [isRunning, setIsRunning] = useState(false);
-
-
     const referance = useRef(null);
 
     useEffect(() => {
         if (isRunning) {
             referance.current = setInterval(() => {
-                setTime((prev) => prev - 1);
+                setTime((prev) => {
+                    if (prev <= 0) {
+                        clearInterval(referance.current);
+                        setIsRunning(false);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
             }, 1000);
         }
         return () => clearInterval(referance.current);
-    }, [time, isRunning]);
+    }, [isRunning]);
 
     const startTime = () => {
-        setIsRunning(true);
+        if (time > 0) setIsRunning(true);
     };
+    
     const pauseTime = () => {
-        setIsRunning(false)
-    }
+        setIsRunning(false);
+    };
+
     return (
         <div>
             <h1 className="text-8xl font-bold mb-8">
@@ -56,7 +54,7 @@ function Timerlong() {
                 </button>
             )}
         </div>
-    )
+    );
 }
 
-export default Timerlong
+export default Timerlong;
